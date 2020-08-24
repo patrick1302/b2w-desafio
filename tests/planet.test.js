@@ -9,11 +9,12 @@ test('Should create a planet', async () => {
   const response = await request(app)
     .post('/planet')
     .send({
-      name: 'test',
+      name: 'alderaan',
       terrain: 'test',
       climate: 'test',
     })
     .expect(201);
+  expect(response.body.film_appearances).toBe(2);
 
   const planet = await Planet.findById(response.body._id);
   expect(planet).not.toBeNull();

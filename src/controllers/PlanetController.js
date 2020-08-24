@@ -21,8 +21,6 @@ module.exports = {
   },
   async listOne(req, res) {
     const { id, name } = req.query;
-    const teste = { name: name } || { _id: id };
-    console.log(teste);
     try {
       let planet;
       id ? (planet = await Planet.find({ _id: id })) : null;

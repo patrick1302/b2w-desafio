@@ -8,7 +8,11 @@ beforeEach(setupDatabase);
 test('Should create a planet', async () => {
   const response = await request(app)
     .post('/planet')
-    .send({ name: 'test', terrain: 'test', climate: 'test' })
+    .send({
+      name: 'test',
+      terrain: 'test',
+      climate: 'test',
+    })
     .expect(201);
 
   const planet = await Planet.findById(response.body._id);

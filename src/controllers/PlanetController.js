@@ -1,11 +1,25 @@
 require('../db/mongoose');
 
+const starWarsAPI = require('../services/starWarsAPI');
+
 const Planet = require('../models/planet');
+
+const getFilmAppearances = async (name) => {
+  try {
+    const starWarsPlanet = await starWarsAPI.get(`/planets?search=${name}`);
+    const film_appearances = starWarsPlanet.data.results[0]['films'].length;
+
+    return film_appearances;
+  } catch (e) {
+    return 0;
+  }
+};
 
 module.exports = {
   async create(req, res) {
     try {
-      const planet = await Planet.create(req.body);
+      const film_appearances = await getFilmAppearances(req.body.name);
+      const planet = await Planet.create({ ...req.body, film_appearances });
       res.status(201).send(planet);
     } catch (e) {
       res.status(500).send();

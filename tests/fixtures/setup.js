@@ -6,6 +6,7 @@ const planetTest = {
   name: 'Kamino',
   climate: 'temperate',
   terrain: 'ocean',
+  film_appearances: 1,
 };
 
 const setupDatabase = async () => {

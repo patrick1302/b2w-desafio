@@ -18,6 +18,11 @@ const planetSchema = new Schema({
     required: true,
     trim: true,
   },
+  film_appearances: {
+    type: Number,
+    required: true,
+    trim: true,
+  },
 });
 
 const Planet = mongoose.model('Planet', planetSchema);
